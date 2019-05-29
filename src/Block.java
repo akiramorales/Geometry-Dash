@@ -1,3 +1,6 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 import javax.swing.JComponent;
@@ -28,9 +31,21 @@ public class Block extends JComponent
 	public void jump()
 	{
 		int time = 0;
-		while(getX()>)
+		int y0 = this.getY();
+		dy++;
+		update();
+		while(this.getY()!=y0)
 		{
+			dy = -(time-10)^2+101;
 			time++;
+			update();
 		}
+	}
+	
+	public void paintComponent(Graphics g)
+	{
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(Color.BLUE);
+		g2.fill(blk);
 	}
 }
