@@ -11,26 +11,28 @@ public class Environment extends JComponent
 	private static final int HEIGHT = 50;
 	private static int heightL = 0, heightU = 0;
 	private static int dx = 0;
-	private boolean isMoving = true;
 	private Rectangle base, projU, projL;
 	
 	public Environment()
 	{
-		Rectangle base = new Rectangle(WIDTH, HEIGHT);
-		Rectangle projL = new Rectangle(WIDTH, HEIGHT + heightL);
-		Rectangle projU = new Rectangle(WIDTH, 300 - heightU);
+		base = new Rectangle(600, HEIGHT);
+		base.setLocation(0, 250);
+		projL = new Rectangle(WIDTH, HEIGHT + setProjHeightL());
+		setLocation(0, 300);
+		projU = new Rectangle(WIDTH, 300 - setProjHeightU());
+		setLocation(0, 0);
 		setBounds(0, 0, 600, 300);
 	}
 	
 	public int setProjHeightL()
 	{
-		heightL = (int) (Math.random() * 100);
+		heightL = (int) (Math.random() * 1000 - 301);
 		return heightL;
 	}
 	
 	public int setProjHeightU()
 	{
-		heightU = (int) (Math.random() * 100);
+		heightU = (int) (Math.random() * 1000 - 301);
 		if(heightU + heightL <= 285)
 		{
 			return heightU;
@@ -41,7 +43,7 @@ public class Environment extends JComponent
 	
 	public void move()
 	{
-		while(isMoving == true) dx++;
+		while(GameMain.getMoveState() == true) dx++;
 		setLocation(getX() - dx, getY());
 	}
 

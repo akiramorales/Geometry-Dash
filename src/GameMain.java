@@ -12,7 +12,7 @@ public class GameMain extends JFrame implements ActionListener
 	private Environment env;
 	private Block block;
 	private ArrayList<Environment> obst;
-	private Boolean isMoving = true;
+	private static Boolean isMoving = true;
 	private int dx = 0, dy = 0;
 	
 	public GameMain()
@@ -65,23 +65,33 @@ public class GameMain extends JFrame implements ActionListener
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
+	public static boolean getMoveState()
+	{
+		boolean state = isMoving;
+		return state;
+	}
+	
 	public static void main(String args[])
 	{
 		new GameMain();
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if(env.getX() < 600)
-		{
-			obst.add(new Environment());
-			this.add(new Environment());
-		}
-		
-		block.update();
-		env.move();
-		repaint();
+//		if(env.getX() < 600)
+//		{
+//			obst.add(new Environment());
+//			this.add(new Environment());
+//		}
+//		
+//		if(env.getX() < 0)
+//		{
+//			obst.remove(new Environment());
+//			this.remove(new Environment());
+//		}
+//		block.update();
+//		env.move();
+//		repaint();
 	}
 }
 
